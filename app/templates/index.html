@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+    <title>Capstone ORBIT Kelompok 6 Neuron</title>
+    <meta content="" name="description">
+    <meta content="" name="keywords">
+
+    <!-- Favicons -->
+    <link rel="icon" href="{{ url_for('static', filename='/assets/img/favicon.png') }}">
+    <link rel="apple-touch-icon" href="{{ url_for('static', filename='/assets/img/apple-touch-icon.png') }}">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600;1,700&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap">
+
+    <!-- Vendor CSS Files -->
+    <link rel="stylesheet" href={{ url_for('static', filename='/assets/vendor/bootstrap/css/bootstrap.min.css' ) }}
+        type="text/css">
+    <link rel="stylesheet" href={{ url_for('static', filename='/assets/vendor/bootstrap-icons/bootstrap-icons.css' ) }}
+        type="text/css">
+    <link rel="stylesheet" href={{ url_for('static', filename='/assets/vendor/fontawesome-free/css/all.min.css' ) }}
+        type="text/css">
+    <link rel="stylesheet" href={{ url_for('static', filename='/assets/vendor/glightbox/css/glightbox.min.css' ) }}
+        type="text/css">
+    <link rel="stylesheet" href={{ url_for('static', filename='/assets/vendor/swiper/swiper-bundle.min.css' ) }}
+        type="text/css">
+    <link rel="stylesheet" href={{ url_for('static', filename='/assets/vendor/aos/aos.css' ) }} type="text/css">
+
+    <!-- Template Main CSS File -->
+    <link rel="stylesheet" href={{ url_for('static', filename='/assets/css/main.css' ) }} type="text/css">
+
+    <!-- =======================================================
+  * Template Name: Logis
+  * Template URL: https://bootstrapmade.com/logis-bootstrap-logistics-website-template/
+  * Updated: Mar 17 2024 with Bootstrap v5.3.3
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+</head>
+
+<body>
+
+    <!-- ======= Header ======= -->
+    <header id="header" class="header d-flex align-items-center fixed-top">
+        <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
+
+            <a href="index.html" class="logo d-flex align-items-center">
+                <!-- Uncomment the line below if you also wish to use an image logo -->
+                <img src={{ url_for('static', filename='/assets/img/logo/flow-01.png' ) }} alt=""></img>
+                <h1>Aquaflow</h1>
+            </a>
+
+            <i class="mobile-nav-toggle mobile-nav-show bi bi-list"></i>
+            <i class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>
+            <nav id="navbar" class="navbar">
+                <ul>
+                    <li><a href="index.html" class="active">Home</a></li>
+                    <li><a href=#about>Aplikasi</a></li>
+                    <li><a href=#perkenalan>Anggota</a></li>
+                </ul>
+            </nav><!-- .navbar -->
+
+        </div>
+    </header><!-- End Header -->
+    <!-- End Header -->
+
+    <!-- ======= Hero Section ======= -->
+    <section id="hero" class="hero d-flex align-items-center">
+        <div class="container">
+            <div class="row gy-4 d-flex justify-content-between">
+                <div class="col-lg-6 order-2 order-lg-1 d-flex flex-column justify-content-center">
+                    <h2 data-aos="fade-up">Segmentasi Banjir</h2>
+                    <p data-aos="fade-up" data-aos-delay="100">Input Gambar</p>
+
+                    <form id="upload-form" class="d-flex align-items-stretch mb-3" data-aos="fade-up"
+                        data-aos-delay="200">
+                        <input type="file" id="image-input" name="image" required>
+                        <button type="submit" class="btn btn-primary">Kirim</button>
+                    </form>
+                    <hr>
+                    {% if result %}
+                    <h3>Hasil</h3>
+                    <p>{{ result }}</p>
+                    <img src="{{ img_path }}" alt="Uploaded Image">
+                    {% endif %}
+                    <div class="row gy-4" data-aos="fade-up" data-aos-delay="400">
+                    </div>
+                </div>
+
+                <div class="col-lg-5 order-1 order-lg-2 hero-img" data-aos="zoom-out">
+                    <img src={{ url_for('static', filename='/assets/img/hero-img.svg' ) }}
+                        class="img-fluid mb-3 mb-lg-0" alt=""></img>
+                </div>
+
+            </div>
+        </div>
+    </section><!-- End Hero Section -->
+
+    <main id="main">
+
+        <!-- ======= Featured Services Section ======= -->
+        <section id="featured-services" class="featured-services">
+            <div class="container">
+            </div>
+        </section>
+        <!-- End Featured Services Section -->
+
+        <!-- ======= About Us Section ======= -->
+        <section id="about" class="about pt-0">
+            <div class="container" data-aos="fade-up">
+
+                <div class="row gy-4">
+                    <div class="col-lg-6 position-relative align-self-start order-lg-last order-first">
+                        <img src={{ url_for('static', filename='/assets/img/1.png' ) }} class="img-fluid glightbox" alt=""></img>
+                    </div>
+                    <div class="col-lg-6 content order-last  order-lg-first">
+                        <h3>Tentang Capstone</h3>
+                        <p>
+                            Web-app segmentasi banjir dari kelompok 6 Neuron dibangun dengan menggunakan model
+                            arsitektur RESNET-Unet.
+                            Model ini dilatih menggunakan dataset yang berisi gambar banjir dari kaggle, dengan akurasi mencapai 80%.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </section><!-- End About Us Section -->
+
+        <!-- ======= Anggota Kelompok ======= -->
+        <section id="perkenalan" class="perkenalan">
+            <div class="container">
+
+                <div class="slides-1 swiper" data-aos="fade-up">
+                    <div class="swiper-wrapper">
+
+                        <div class="swiper-slide">
+                            <div class="perkenalan-item">
+                                <img src={{ url_for('static', filename='/assets/img/team/Caca.jpg' ) }}
+                                    class="perkenalan-img" alt=""></img>
+                                <h3>Fairuza Salsabilla</h3>
+                                <h3>Universitas Riau</h3>
+                                <h4>Ketua Kelompok</h4>
+                                <p>Modelling dan Deployment</p>
+                            </div>
+                        </div><!-- End Perkenalan -->
+
+                        <div class="swiper-slide">
+                            <div class="perkenalan-item">
+                                <img src={{ url_for('static', filename='/assets/img/team/Araselly.jpg' ) }}
+                                    class="perkenalan-img" alt=""></img>
+                                <h3>Araselly Anastasiya Purba</h3>
+                                <h3>Universitas</h3>
+                                <h4>Anggota Kelompok</h4>
+                                <p>Modelling</p>
+                            </div>
+                        </div><!-- End Perkenalan -->
+
+                        <div class="swiper-slide">
+                            <div class="perkenalan-item">
+                                <img src={{ url_for('static', filename='/assets/img/team/Denia.jpg' ) }}
+                                    class="perkenalan-img" alt=""></img>
+                                <h3>Denia Amanda Zahra</h3>
+                                <h3>Universitas</h3>
+                                <h4>Anggota Kelompok</h4>
+                                <p>Modelling</p>
+                            </div>
+                        </div><!-- End Perkenalan -->
+
+                        <div class="swiper-slide">
+                            <div class="perkenalan-item">
+                                <img src={{ url_for('static', filename='/assets/img/team/Fadel.jpg' ) }}
+                                    class="perkenalan-img" alt=""></img>
+                                <h3>Fadel Avonda Alorka</h3>
+                                <h3>Universitas </h3>
+                                <h4>Anggota Kelompok</h4>
+                                <p>Deployment</p>
+                            </div>
+                        </div><!-- End Perkenalan -->
+
+                        <div class="swiper-slide">
+                            <div class="perkenalan-item">
+                                <img src={{ url_for('static', filename='/assets/img/team/Diah.jpg' ) }}
+                                    class="perkenalan-img" alt=""></img>
+                                <h3>R. Sadiah Maharani</h3>
+                                <h3>Universitas Riau</h3>
+                                <h4>Anggota Kelompok</h4>
+                                <p>Modelling dan Deployment</p>
+                            </div>
+                        </div><!-- End Perkenalan -->
+
+                    </div>
+                    <div class="swiper-pagination"></div>
+                    <!-- Add Arrows -->
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev"></div>
+                </div>
+
+            </div>
+        </section>
+        <!-- End Perkenalan Anggota Kelompok -->
+
+    </main><!-- End #main -->
+
+    <!-- ======= Footer ======= -->
+    <footer id="footer" class="footer">
+        <div class="container-fluid text-center footer-info">
+            <a href="index.html" class="logo d-flex align-items-center">
+                <span>Aquaflow </span>
+            </a>
+            <p>Capstone Kelompok 6 kelas Neuron <br>
+                Studi Independen PT ORBIT Batch 6
+            </p>
+        </div>
+
+        <div class="container mt-4">
+            <div class="copyright">
+                &copy; Copyright <strong><span>Logis</span></strong>. All Rights Reserved
+            </div>
+            <div class="credits">
+                Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+            </div>
+        </div>
+
+    </footer><!-- End Footer -->
+    <!-- End Footer -->
+
+    <a href="#" class="scroll-top d-flex align-items-center justify-content-center"><i
+            class="bi bi-arrow-up-short"></i></a>
+
+    <div id="preloader"></div>
+
+    <!-- Vendor JS Files -->
+    <script src={{ url_for('static', filename='/assets/vendor/bootstrap/js/bootstrap.bundle.min.js' ) }}></script>
+    <script src={{ url_for('static', filename='/assets/vendor/purecounter/purecounter_vanilla.js' ) }}></script>
+    <script src={{ url_for('static', filename='/assets/vendor/glightbox/js/glightbox.min.js' ) }}></script>
+    <script src={{ url_for('static', filename='/assets/vendor/swiper/swiper-bundle.min.js' ) }}></script>
+    <script src={{ url_for('static', filename='/assets/vendor/aos/aos.js' ) }}></script>
+    <script src={{ url_for('static', filename='/assets/vendor/php-email-form/validate.js' ) }}></script>
+
+    <!-- Template Main JS File -->
+    <script src={{ url_for('static', filename='/assets/js/main.js' ) }}></script>
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+    <!-- Script Form API -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        // Contoh penggunaan API di client-side
+        const form = document.getElementById('upload-form');
+        form.addEventListener('submit', async (event) => {
+            // Kode yang sudah dijelaskan sebelumnya
+        });
+    </script>
+
+</body>
+
+</html>
